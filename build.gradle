@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.8.17'
+    id 'idea' //the most fuc*ing thing -> YOU NEED THIS: id 'idea' for imports after generating proto
+}
+
+group 'si.um.feri'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //grpc
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.44.0'
+    implementation 'io.grpc:grpc-protobuf:1.44.0'
+    implementation 'io.grpc:grpc-stub:1.44.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.19.2"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.44.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
