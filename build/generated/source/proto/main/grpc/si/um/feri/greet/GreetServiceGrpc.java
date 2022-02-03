@@ -108,6 +108,68 @@ public final class GreetServiceGrpc {
     return getLongGreetMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<si.um.feri.greet.GreetEveryoneRequest,
+      si.um.feri.greet.GreetEveryoneResponse> getGreetEveryoneMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GreetEveryone",
+      requestType = si.um.feri.greet.GreetEveryoneRequest.class,
+      responseType = si.um.feri.greet.GreetEveryoneResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<si.um.feri.greet.GreetEveryoneRequest,
+      si.um.feri.greet.GreetEveryoneResponse> getGreetEveryoneMethod() {
+    io.grpc.MethodDescriptor<si.um.feri.greet.GreetEveryoneRequest, si.um.feri.greet.GreetEveryoneResponse> getGreetEveryoneMethod;
+    if ((getGreetEveryoneMethod = GreetServiceGrpc.getGreetEveryoneMethod) == null) {
+      synchronized (GreetServiceGrpc.class) {
+        if ((getGreetEveryoneMethod = GreetServiceGrpc.getGreetEveryoneMethod) == null) {
+          GreetServiceGrpc.getGreetEveryoneMethod = getGreetEveryoneMethod =
+              io.grpc.MethodDescriptor.<si.um.feri.greet.GreetEveryoneRequest, si.um.feri.greet.GreetEveryoneResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GreetEveryone"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.greet.GreetEveryoneRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.greet.GreetEveryoneResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GreetServiceMethodDescriptorSupplier("GreetEveryone"))
+              .build();
+        }
+      }
+    }
+    return getGreetEveryoneMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<si.um.feri.greet.GreetWithDeadlineRequest,
+      si.um.feri.greet.GreetWithDeadlineResponse> getGreetWithDeadlineMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GreetWithDeadline",
+      requestType = si.um.feri.greet.GreetWithDeadlineRequest.class,
+      responseType = si.um.feri.greet.GreetWithDeadlineResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<si.um.feri.greet.GreetWithDeadlineRequest,
+      si.um.feri.greet.GreetWithDeadlineResponse> getGreetWithDeadlineMethod() {
+    io.grpc.MethodDescriptor<si.um.feri.greet.GreetWithDeadlineRequest, si.um.feri.greet.GreetWithDeadlineResponse> getGreetWithDeadlineMethod;
+    if ((getGreetWithDeadlineMethod = GreetServiceGrpc.getGreetWithDeadlineMethod) == null) {
+      synchronized (GreetServiceGrpc.class) {
+        if ((getGreetWithDeadlineMethod = GreetServiceGrpc.getGreetWithDeadlineMethod) == null) {
+          GreetServiceGrpc.getGreetWithDeadlineMethod = getGreetWithDeadlineMethod =
+              io.grpc.MethodDescriptor.<si.um.feri.greet.GreetWithDeadlineRequest, si.um.feri.greet.GreetWithDeadlineResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GreetWithDeadline"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.greet.GreetWithDeadlineRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.greet.GreetWithDeadlineResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new GreetServiceMethodDescriptorSupplier("GreetWithDeadline"))
+              .build();
+        }
+      }
+    }
+    return getGreetWithDeadlineMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -186,6 +248,26 @@ public final class GreetServiceGrpc {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getLongGreetMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     *BiDi Streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<si.um.feri.greet.GreetEveryoneRequest> greetEveryone(
+        io.grpc.stub.StreamObserver<si.um.feri.greet.GreetEveryoneResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getGreetEveryoneMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *RPC with Deadline
+     * </pre>
+     */
+    public void greetWithDeadline(si.um.feri.greet.GreetWithDeadlineRequest request,
+        io.grpc.stub.StreamObserver<si.um.feri.greet.GreetWithDeadlineResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGreetWithDeadlineMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -209,6 +291,20 @@ public final class GreetServiceGrpc {
                 si.um.feri.greet.LongGreetRequest,
                 si.um.feri.greet.LongGreetResponse>(
                   this, METHODID_LONG_GREET)))
+          .addMethod(
+            getGreetEveryoneMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+              new MethodHandlers<
+                si.um.feri.greet.GreetEveryoneRequest,
+                si.um.feri.greet.GreetEveryoneResponse>(
+                  this, METHODID_GREET_EVERYONE)))
+          .addMethod(
+            getGreetWithDeadlineMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                si.um.feri.greet.GreetWithDeadlineRequest,
+                si.um.feri.greet.GreetWithDeadlineResponse>(
+                  this, METHODID_GREET_WITH_DEADLINE)))
           .build();
     }
   }
@@ -259,6 +355,28 @@ public final class GreetServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getLongGreetMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     * <pre>
+     *BiDi Streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<si.um.feri.greet.GreetEveryoneRequest> greetEveryone(
+        io.grpc.stub.StreamObserver<si.um.feri.greet.GreetEveryoneResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getGreetEveryoneMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *RPC with Deadline
+     * </pre>
+     */
+    public void greetWithDeadline(si.um.feri.greet.GreetWithDeadlineRequest request,
+        io.grpc.stub.StreamObserver<si.um.feri.greet.GreetWithDeadlineResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGreetWithDeadlineMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -295,6 +413,16 @@ public final class GreetServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getGreetManyTimesMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     *RPC with Deadline
+     * </pre>
+     */
+    public si.um.feri.greet.GreetWithDeadlineResponse greetWithDeadline(si.um.feri.greet.GreetWithDeadlineRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGreetWithDeadlineMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -321,11 +449,24 @@ public final class GreetServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGreetMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     *RPC with Deadline
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<si.um.feri.greet.GreetWithDeadlineResponse> greetWithDeadline(
+        si.um.feri.greet.GreetWithDeadlineRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGreetWithDeadlineMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GREET = 0;
   private static final int METHODID_GREET_MANY_TIMES = 1;
-  private static final int METHODID_LONG_GREET = 2;
+  private static final int METHODID_GREET_WITH_DEADLINE = 2;
+  private static final int METHODID_LONG_GREET = 3;
+  private static final int METHODID_GREET_EVERYONE = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -352,6 +493,10 @@ public final class GreetServiceGrpc {
           serviceImpl.greetManyTimes((si.um.feri.greet.GreetManyTimesRequest) request,
               (io.grpc.stub.StreamObserver<si.um.feri.greet.GreetManyTimesResponse>) responseObserver);
           break;
+        case METHODID_GREET_WITH_DEADLINE:
+          serviceImpl.greetWithDeadline((si.um.feri.greet.GreetWithDeadlineRequest) request,
+              (io.grpc.stub.StreamObserver<si.um.feri.greet.GreetWithDeadlineResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -365,6 +510,9 @@ public final class GreetServiceGrpc {
         case METHODID_LONG_GREET:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.longGreet(
               (io.grpc.stub.StreamObserver<si.um.feri.greet.LongGreetResponse>) responseObserver);
+        case METHODID_GREET_EVERYONE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.greetEveryone(
+              (io.grpc.stub.StreamObserver<si.um.feri.greet.GreetEveryoneResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -419,6 +567,8 @@ public final class GreetServiceGrpc {
               .addMethod(getGreetMethod())
               .addMethod(getGreetManyTimesMethod())
               .addMethod(getLongGreetMethod())
+              .addMethod(getGreetEveryoneMethod())
+              .addMethod(getGreetWithDeadlineMethod())
               .build();
         }
       }

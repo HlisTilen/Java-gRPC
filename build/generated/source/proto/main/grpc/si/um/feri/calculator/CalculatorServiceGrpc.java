@@ -108,6 +108,68 @@ public final class CalculatorServiceGrpc {
     return getComputeAverageMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<si.um.feri.calculator.FindMaximumRequest,
+      si.um.feri.calculator.FindMaximumResponse> getFindMaximumMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "FindMaximum",
+      requestType = si.um.feri.calculator.FindMaximumRequest.class,
+      responseType = si.um.feri.calculator.FindMaximumResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<si.um.feri.calculator.FindMaximumRequest,
+      si.um.feri.calculator.FindMaximumResponse> getFindMaximumMethod() {
+    io.grpc.MethodDescriptor<si.um.feri.calculator.FindMaximumRequest, si.um.feri.calculator.FindMaximumResponse> getFindMaximumMethod;
+    if ((getFindMaximumMethod = CalculatorServiceGrpc.getFindMaximumMethod) == null) {
+      synchronized (CalculatorServiceGrpc.class) {
+        if ((getFindMaximumMethod = CalculatorServiceGrpc.getFindMaximumMethod) == null) {
+          CalculatorServiceGrpc.getFindMaximumMethod = getFindMaximumMethod =
+              io.grpc.MethodDescriptor.<si.um.feri.calculator.FindMaximumRequest, si.um.feri.calculator.FindMaximumResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindMaximum"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.calculator.FindMaximumRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.calculator.FindMaximumResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CalculatorServiceMethodDescriptorSupplier("FindMaximum"))
+              .build();
+        }
+      }
+    }
+    return getFindMaximumMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<si.um.feri.calculator.SquareRootRequest,
+      si.um.feri.calculator.SquareRootResponse> getSquareRootMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SquareRoot",
+      requestType = si.um.feri.calculator.SquareRootRequest.class,
+      responseType = si.um.feri.calculator.SquareRootResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<si.um.feri.calculator.SquareRootRequest,
+      si.um.feri.calculator.SquareRootResponse> getSquareRootMethod() {
+    io.grpc.MethodDescriptor<si.um.feri.calculator.SquareRootRequest, si.um.feri.calculator.SquareRootResponse> getSquareRootMethod;
+    if ((getSquareRootMethod = CalculatorServiceGrpc.getSquareRootMethod) == null) {
+      synchronized (CalculatorServiceGrpc.class) {
+        if ((getSquareRootMethod = CalculatorServiceGrpc.getSquareRootMethod) == null) {
+          CalculatorServiceGrpc.getSquareRootMethod = getSquareRootMethod =
+              io.grpc.MethodDescriptor.<si.um.feri.calculator.SquareRootRequest, si.um.feri.calculator.SquareRootResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SquareRoot"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.calculator.SquareRootRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  si.um.feri.calculator.SquareRootResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CalculatorServiceMethodDescriptorSupplier("SquareRoot"))
+              .build();
+        }
+      }
+    }
+    return getSquareRootMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -177,6 +239,25 @@ public final class CalculatorServiceGrpc {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getComputeAverageMethod(), responseObserver);
     }
 
+    /**
+     */
+    public io.grpc.stub.StreamObserver<si.um.feri.calculator.FindMaximumRequest> findMaximum(
+        io.grpc.stub.StreamObserver<si.um.feri.calculator.FindMaximumResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getFindMaximumMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     *the error being sent is of type INVALID_ARGUMENT
+     * </pre>
+     */
+    public void squareRoot(si.um.feri.calculator.SquareRootRequest request,
+        io.grpc.stub.StreamObserver<si.um.feri.calculator.SquareRootResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSquareRootMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -200,6 +281,20 @@ public final class CalculatorServiceGrpc {
                 si.um.feri.calculator.ComputeAverageRequest,
                 si.um.feri.calculator.ComputeAverageResponse>(
                   this, METHODID_COMPUTE_AVERAGE)))
+          .addMethod(
+            getFindMaximumMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+              new MethodHandlers<
+                si.um.feri.calculator.FindMaximumRequest,
+                si.um.feri.calculator.FindMaximumResponse>(
+                  this, METHODID_FIND_MAXIMUM)))
+          .addMethod(
+            getSquareRootMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                si.um.feri.calculator.SquareRootRequest,
+                si.um.feri.calculator.SquareRootResponse>(
+                  this, METHODID_SQUARE_ROOT)))
           .build();
     }
   }
@@ -241,6 +336,27 @@ public final class CalculatorServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getComputeAverageMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<si.um.feri.calculator.FindMaximumRequest> findMaximum(
+        io.grpc.stub.StreamObserver<si.um.feri.calculator.FindMaximumResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getFindMaximumMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     *the error being sent is of type INVALID_ARGUMENT
+     * </pre>
+     */
+    public void squareRoot(si.um.feri.calculator.SquareRootRequest request,
+        io.grpc.stub.StreamObserver<si.um.feri.calculator.SquareRootResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSquareRootMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -271,6 +387,18 @@ public final class CalculatorServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getPrimeNumberDecompositionMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     *the error being sent is of type INVALID_ARGUMENT
+     * </pre>
+     */
+    public si.um.feri.calculator.SquareRootResponse squareRoot(si.um.feri.calculator.SquareRootRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSquareRootMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -294,11 +422,26 @@ public final class CalculatorServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSumMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     *the error being sent is of type INVALID_ARGUMENT
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<si.um.feri.calculator.SquareRootResponse> squareRoot(
+        si.um.feri.calculator.SquareRootRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSquareRootMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SUM = 0;
   private static final int METHODID_PRIME_NUMBER_DECOMPOSITION = 1;
-  private static final int METHODID_COMPUTE_AVERAGE = 2;
+  private static final int METHODID_SQUARE_ROOT = 2;
+  private static final int METHODID_COMPUTE_AVERAGE = 3;
+  private static final int METHODID_FIND_MAXIMUM = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -325,6 +468,10 @@ public final class CalculatorServiceGrpc {
           serviceImpl.primeNumberDecomposition((si.um.feri.calculator.PrimeNumberDecompositionRequest) request,
               (io.grpc.stub.StreamObserver<si.um.feri.calculator.PrimeNumberDecompositionResponse>) responseObserver);
           break;
+        case METHODID_SQUARE_ROOT:
+          serviceImpl.squareRoot((si.um.feri.calculator.SquareRootRequest) request,
+              (io.grpc.stub.StreamObserver<si.um.feri.calculator.SquareRootResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -338,6 +485,9 @@ public final class CalculatorServiceGrpc {
         case METHODID_COMPUTE_AVERAGE:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.computeAverage(
               (io.grpc.stub.StreamObserver<si.um.feri.calculator.ComputeAverageResponse>) responseObserver);
+        case METHODID_FIND_MAXIMUM:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.findMaximum(
+              (io.grpc.stub.StreamObserver<si.um.feri.calculator.FindMaximumResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -392,6 +542,8 @@ public final class CalculatorServiceGrpc {
               .addMethod(getSumMethod())
               .addMethod(getPrimeNumberDecompositionMethod())
               .addMethod(getComputeAverageMethod())
+              .addMethod(getFindMaximumMethod())
+              .addMethod(getSquareRootMethod())
               .build();
         }
       }
