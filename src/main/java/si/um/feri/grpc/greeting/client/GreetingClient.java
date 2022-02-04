@@ -31,7 +31,7 @@ public class GreetingClient {
             default -> System.out.println("Wrong number!");
         }
 
-        System.out.println("Shutting down channel");
+        System.out.println("Shutting down channel...");
         channel.shutdown();
     }
 
