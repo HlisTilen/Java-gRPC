@@ -261,6 +261,7 @@ public final class GreetServiceGrpc {
     /**
      * <pre>
      *RPC with Deadline
+     *this RPC will complete in no less than 300ms
      * </pre>
      */
     public void greetWithDeadline(si.um.feri.greet.GreetWithDeadlineRequest request,
@@ -370,6 +371,7 @@ public final class GreetServiceGrpc {
     /**
      * <pre>
      *RPC with Deadline
+     *this RPC will complete in no less than 300ms
      * </pre>
      */
     public void greetWithDeadline(si.um.feri.greet.GreetWithDeadlineRequest request,
@@ -417,6 +419,7 @@ public final class GreetServiceGrpc {
     /**
      * <pre>
      *RPC with Deadline
+     *this RPC will complete in no less than 300ms
      * </pre>
      */
     public si.um.feri.greet.GreetWithDeadlineResponse greetWithDeadline(si.um.feri.greet.GreetWithDeadlineRequest request) {
@@ -453,6 +456,7 @@ public final class GreetServiceGrpc {
     /**
      * <pre>
      *RPC with Deadline
+     *this RPC will complete in no less than 300ms
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<si.um.feri.greet.GreetWithDeadlineResponse> greetWithDeadline(
