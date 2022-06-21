@@ -34,7 +34,7 @@ public class GreetingClient {
         }
 
         switch (number) {
-            case 1 -> doUnaryCall(secureChannel);
+            case 1 -> doUnaryCall(channel);
             case 2 -> doServerStreamingCall(channel);
             case 3 -> doClientStreamingCall(channel);
             case 4 -> doBiDiStreamingCall(channel);

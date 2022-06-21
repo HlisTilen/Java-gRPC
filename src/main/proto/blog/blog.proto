@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package calculator;
+package blog;
 
 option java_package = "si.um.feri.blog";
 option java_multiple_files = true;
